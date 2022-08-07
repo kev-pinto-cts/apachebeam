@@ -13,7 +13,7 @@ def run(argv=None):
         lines = (
                 p
                 | "Read File" >> beam.io.ReadFromText(args.input, skip_header_lines=1)
-                | "Split Lines" >> beam.Map(split_input)
+                | "Parse Lines" >> beam.Map(lambda element: element.split())
                 | "Print" >> beam.Map(print)
                 )
 
